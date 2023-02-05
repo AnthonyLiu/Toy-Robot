@@ -7,7 +7,9 @@ export interface IPosition {
   y: number;
 }
 
-export const enum Directions { 'EAST', 'NORTH', 'WEST', 'SOUTH' }
+export type Direction = 'EAST' | 'NORTH' | 'WEST' | 'SOUTH';
+
+export enum Directions { 'EAST', 'NORTH', 'WEST', 'SOUTH' }
 
 export class Robot {
   public tableSize: ITableSize;
@@ -20,7 +22,23 @@ export class Robot {
     this.direction = null;
   }
 
-  public place(inputArgs: string): any {
+  public place(inputArgs: string): boolean {
+    const [posXStr, posYStr, direction] = inputArgs.split(',');
+    const [posX, posY] = [posXStr, posYStr].map(Number);
+
+    // act place only if all args are valid
+    if (
+      posX >= 0 && posX < this.tableSize.x &&
+      posY >= 0 && posY < this.tableSize.y &&
+      Directions[direction as Direction] !== undefined
+    ) {
+      this.position = {x: posX, y: posY};
+      this.direction = Directions[direction as Direction] as number;
+      return true;
+    }
+
+    console.log('Invalid parameters');
+    return false;
   }
 
   public left(): any {
@@ -35,7 +53,7 @@ export class Robot {
   }
 
   public report(): boolean {
-    console.log(`Do report action`)
+    console.log(`${this.position?.x}, ${this.position?.y}, ${this.direction}`)
     return true;
   }
 }

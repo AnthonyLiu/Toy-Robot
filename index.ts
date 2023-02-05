@@ -6,9 +6,10 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+const robot = new Robot();
+
 rl.on('line', (input: string) => {
   const [cmd, args] = input.split(' ');
-  const robot = new Robot();
 
   if (cmd === 'EXIT') {
     rl.close();
@@ -16,6 +17,7 @@ rl.on('line', (input: string) => {
     switch (cmd) {
       case 'PLACE':
         robot.place(args);
+        robot.report();
         break;
       case 'MOVE':
         robot.move();
@@ -27,7 +29,7 @@ rl.on('line', (input: string) => {
         robot.right();
         break;
       case 'REPORT':
-        robot.report()
+        robot.report();
         break;
     }
   }
