@@ -58,9 +58,42 @@ export class Robot {
     return false;
   }
 
+  /**
+   * change position depends base on current direction
+   * ignore the command if the robot would move out of the table top
+   */
   public move(): boolean {
-    console.log(`Do move action`);
-    return true;
+    if (this.isInitialized()) {
+      switch (this.direction) {
+        case Directions.EAST:
+          if (this.position!.x > 1) {
+            this.position!.x--;
+            return true;
+          }
+          break;
+        case Directions.NORTH:
+          if (this.position!.y < this.tableSize.y) {
+            this.position!.y++;
+            return true;
+          }
+          break;
+        case Directions.WEST:
+          if (this.position!.x < this.tableSize.x) {
+            this.position!.x++;
+            return true;
+          }
+          break;
+        case Directions.SOUTH:
+          if (this.position!.y > 1) {
+            this.position!.y--;
+            return true;
+          }
+          break;
+      }
+      return false;
+    }
+
+    return false;
   }
 
   public report(): boolean {
