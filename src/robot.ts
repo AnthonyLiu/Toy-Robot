@@ -37,7 +37,6 @@ export class Robot {
       return true;
     }
 
-    console.log('Invalid parameters');
     return false;
   }
 
@@ -107,7 +106,7 @@ export class Robot {
             process.stdout.write('[ ]');
           }
         }
-        console.log();
+        console.log(); // newline for table displaying
       }
       return true;
     }
@@ -115,6 +114,7 @@ export class Robot {
     return false;
   }
 
+  // for unit testing only
   public getStatus(): string {
     return (`${this.position?.x}, ${this.position?.y}, ${Directions[this.direction!]}`)
   }

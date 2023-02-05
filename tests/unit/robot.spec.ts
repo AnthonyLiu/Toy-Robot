@@ -1,6 +1,6 @@
 import 'mocha';
 import { expect } from 'chai';
-import { Robot, Directions } from '../../src/robot';
+import { Robot } from '../../src/robot';
 
 describe("Robot", () => {
   let robot: Robot;

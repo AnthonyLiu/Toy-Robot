@@ -17,7 +17,6 @@ rl.on('line', (input: string) => {
     switch (cmd) {
       case 'PLACE':
         robot.place(args);
-        robot.report();
         break;
       case 'MOVE':
         robot.move();
