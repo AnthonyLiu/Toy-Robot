@@ -41,10 +41,21 @@ export class Robot {
     return false;
   }
 
-  public left(): any {
+  public left(): boolean {
+    if (this.isInitialized()) {
+      // calculate the new direction based on the Direction enum
+      this.direction = this.direction === Directions.EAST ? Directions.SOUTH: this.direction! - 1;
+      return true;
+    }
+    return false;
   }
 
-  public right(): any {
+  public right(): boolean {
+    if (this.isInitialized()) {
+      this.direction = this.direction === Directions.SOUTH ? Directions.EAST : this.direction! + 1;
+      return true;
+    }
+    return false;
   }
 
   public move(): boolean {
@@ -53,11 +64,11 @@ export class Robot {
   }
 
   public report(): boolean {
-    if (this.position && this.direction) {
+    if (this.isInitialized()) {
       // print tableTop in cli
       for (let y = this.tableSize.y; y >0; y--) {
         for (let x = 1; x <= this.tableSize.x; x++) {
-          if (x === this.position.x && y === this.position.y) {
+          if (x === this.position!.x && y === this.position!.y) {
             process.stdout.write(`[${Directions[this.direction!][0]}]`);
           } else {
             process.stdout.write('[ ]');
@@ -72,6 +83,10 @@ export class Robot {
   }
 
   public getStatus(): string {
-    return (`${this.position?.x}, ${this.position?.y}, ${this.direction}`)
+    return (`${this.position?.x}, ${this.position?.y}, ${Directions[this.direction!]}`)
+  }
+
+  private isInitialized(): boolean {
+    return this.position !== null && this.direction !== null;
   }
 }
