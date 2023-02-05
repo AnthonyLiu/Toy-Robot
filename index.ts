@@ -1,11 +1,11 @@
-const readline = require('readline');
+import readline from 'readline';
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
 
-rl.on('line', (input) => {
+rl.on('line', (input: string) => {
   const [cmd, args] = input.split(' ');
 
   if (cmd === 'EXIT') {
