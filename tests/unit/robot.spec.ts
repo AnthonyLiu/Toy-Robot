@@ -12,15 +12,16 @@ describe("Robot", () => {
   // test place function
   describe("place action", () => {
     it("Should act when passing correct arguments", function () {
-      const testArg = '0,0,NORTH';
-      robot.place(testArg);
-      expect(robot.getStatus()).to.equal('0, 0, 1');
+      const testArg = '1,1,NORTH';
+      expect(robot.place(testArg)).to.be.true;
+      expect(robot.getStatus()).to.equal('1, 1, NORTH');
     });
 
     it("Should ignore when passing incorrect arguments", function () {
-      const testArg = '0,-1,NORTH';
+      const testArg = '0,1,NORTH';
       robot.place(testArg);
-      expect(robot.getStatus()).to.equal('undefined, undefined, null');
+      expect(robot.place(testArg)).to.be.false;
+      expect(robot.getStatus()).to.equal('undefined, undefined, undefined');
     });
   })
 });

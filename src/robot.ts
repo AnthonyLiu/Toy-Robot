@@ -53,8 +53,7 @@ export class Robot {
   }
 
   public report(): boolean {
-    if (this.position !== null && this.direction !== null) {
-
+    if (this.position && this.direction) {
       // print tableTop in cli
       for (let y = this.tableSize.y; y >0; y--) {
         for (let x = 1; x <= this.tableSize.x; x++) {
