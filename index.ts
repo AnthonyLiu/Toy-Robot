@@ -16,20 +16,28 @@ rl.on('line', (input: string) => {
   } else if (['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'].includes(cmd)) {
     switch (cmd) {
       case 'PLACE':
-        robot.place(args);
+        displayCmdStatus(cmd, robot.place(args));
         break;
       case 'MOVE':
-        robot.move();
+         displayCmdStatus(cmd, robot.move());
         break;
       case 'LEFT':
-        robot.left();
+         displayCmdStatus(cmd, robot.left());
         break;
       case 'RIGHT':
-        robot.right();
+         displayCmdStatus(cmd, robot.right());
         break;
       case 'REPORT':
-        robot.report();
+         displayCmdStatus(cmd, robot.report());
         break;
     }
   }
 })
+
+const displayCmdStatus = (cmdName: string, succeeded: boolean): void => {
+  if (succeeded) {
+    console.log(`Run '${cmdName}' successfully.`)
+  } else {
+    console.log(`Run '${cmdName}' failed.`)
+  }
+}
