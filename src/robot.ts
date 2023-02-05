@@ -28,8 +28,8 @@ export class Robot {
 
     // act place only if all args are valid
     if (
-      posX >= 0 && posX < this.tableSize.x &&
-      posY >= 0 && posY < this.tableSize.y &&
+      posX > 0 && posX <= this.tableSize.x &&
+      posY > 0 && posY <= this.tableSize.y &&
       Directions[direction as Direction] !== undefined
     ) {
       this.position = {x: posX, y: posY};
@@ -53,8 +53,23 @@ export class Robot {
   }
 
   public report(): boolean {
-    console.log(`${this.position?.x}, ${this.position?.y}, ${this.direction}`)
-    return true;
+    if (this.position !== null && this.direction !== null) {
+
+      // print tableTop in cli
+      for (let y = this.tableSize.y; y >0; y--) {
+        for (let x = 1; x <= this.tableSize.x; x++) {
+          if (x === this.position.x && y === this.position.y) {
+            process.stdout.write(`[${Directions[this.direction!][0]}]`);
+          } else {
+            process.stdout.write('[ ]');
+          }
+        }
+        console.log();
+      }
+      return true;
+    }
+
+    return false;
   }
 
   public getStatus(): string {
