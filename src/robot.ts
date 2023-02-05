@@ -12,8 +12,8 @@ export type Direction = 'EAST' | 'NORTH' | 'WEST' | 'SOUTH';
 export enum Directions { 'EAST', 'NORTH', 'WEST', 'SOUTH' }
 
 export class Robot {
-  public tableSize: ITableSize;
-  public direction: Directions | null;
+  private tableSize: ITableSize;
+  private direction: Directions | null;
   private position: IPosition | null;
 
   constructor(tableSize: ITableSize = {x: 5, y: 5}) {
@@ -55,5 +55,9 @@ export class Robot {
   public report(): boolean {
     console.log(`${this.position?.x}, ${this.position?.y}, ${this.direction}`)
     return true;
+  }
+
+  public getStatus(): string {
+    return (`${this.position?.x}, ${this.position?.y}, ${this.direction}`)
   }
 }
