@@ -11,12 +11,14 @@ const robot = new Robot();
 rl.on('line', (input: string) => {
   const [cmd, args] = input.split(' ');
 
-  if (cmd === 'EXIT') {
-    rl.close();
-  } else if (['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'].includes(cmd)) {
+  if (['PLACE', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'].includes(cmd)) {
     switch (cmd) {
       case 'PLACE':
-        displayCmdStatus(cmd, robot.place(args));
+        if (!args) {
+          console.log('Missing parameters.')
+        } else {
+          displayCmdStatus(cmd, robot.place(args));
+        }
         break;
       case 'MOVE':
          displayCmdStatus(cmd, robot.move());
@@ -31,6 +33,8 @@ rl.on('line', (input: string) => {
          displayCmdStatus(cmd, robot.report());
         break;
     }
+  } else {
+    console.log('Invalid command.')
   }
 })
 

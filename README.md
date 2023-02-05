@@ -47,6 +47,7 @@ MOVE            => Run 'MOVE' successfully.
 LEFT            => Run 'LEFT' successfully.
 MOVE            => Run 'MOVE' failed.
 RIGHT           => Run 'RIGHT' successfully.
+RIGHT           => Run 'RIGHT' successfully.
 MOVE            => Run 'MOVE' successfully.
 REPORT          => Run 'REPORT' successfully. && Display table
 ```
