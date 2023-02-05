@@ -2,8 +2,9 @@
   "name": "toy-robot",
   "version": "1.0.0",
   "description": "A coding challenge",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AnthonyLiu/Toy-Robot/issues"
   },
-  "homepage": "https://github.com/AnthonyLiu/Toy-Robot#readme"
+  "homepage": "https://github.com/AnthonyLiu/Toy-Robot#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.19"
+  }
 }
