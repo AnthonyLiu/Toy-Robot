@@ -1,0 +1,19 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "A coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnthonyLiu/Toy-Robot.git"
+  },
+  "author": "Anthony Liu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnthonyLiu/Toy-Robot/issues"
+  },
+  "homepage": "https://github.com/AnthonyLiu/Toy-Robot#readme"
+}
